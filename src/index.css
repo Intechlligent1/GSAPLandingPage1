@@ -22,7 +22,28 @@ body {
     color: white;
     scroll-behavior: smooth;
     overflow-x: hidden;
+    cursor: none;
+    /* Hide default cursor for custom cursor */
 }
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #e7d393;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #d4c080;
+}
+
 
 @utility flex-center {
     @apply flex justify-center items-center;
@@ -44,12 +65,10 @@ body {
 }
 
 @utility radial-gradient {
-    background: radial-gradient(
-            circle at center,
+    background: radial-gradient(circle at center,
             #434343 0%,
             #000 50%,
-            transparent 100%
-    );
+            transparent 100%);
 }
 
 @utility masked-img {
@@ -58,6 +77,27 @@ body {
     mask-position: center;
     mask-size: 50%;
 }
+
+@utility glassmorphism {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@utility glow-yellow {
+    filter: drop-shadow(0 0 20px rgba(231, 211, 147, 0.4));
+}
+
+@utility hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+@utility hover-lift:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(231, 211, 147, 0.2);
+}
+
 
 @layer components {
     main {
@@ -218,7 +258,7 @@ body {
         .top-grid {
             @apply grid grid-cols-1 xl:grid-cols-12 gap-5 mb-5 md:px-0 px-5;
 
-            > div {
+            >div {
                 @apply rounded-3xl overflow-hidden h-72 relative;
             }
 
@@ -230,7 +270,7 @@ body {
         .bottom-grid {
             @apply grid grid-cols-1 md:grid-cols-12 gap-5 md:px-0 px-5;
 
-            > div {
+            >div {
                 @apply rounded-3xl overflow-hidden h-72 relative;
             }
 
